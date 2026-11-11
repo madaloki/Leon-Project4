@@ -4,46 +4,100 @@
 
 /* Apply styles to the entire page */
 body {
-    text-align: center;               /* Center text and inline elements (like the canvas) */
-    font-family: Arial, sans-serif;   /* Use Arial if available, otherwise sans-serif */
+    text-align: center;                                   /* Center text and inline elements (like the canvas) */
+    font-family: "Comic Sans MS", "Comic Neue", cursive;  /* Comic Sans, with backups if it's missing */
+    background: linear-gradient(#2f5f8f, #24496f);        /* Calm blue that gets a little darker at the bottom */
+    color: #f3f6fa;                                       /* Soft white text so it reads well on blue */
+    margin: 0;                                            /* No white gap around the page */
+    padding: 20px;                                        /* Space inside the page edges */
+    min-height: 100vh;                                    /* Blue fills the whole window */
+    box-sizing: border-box;                               /* Padding doesn't add extra height */
+}
+
+/* Main title */
+h1 {
+    color: #ffd56b;                                       /* Warm yellow to stand out on blue */
+    font-size: 42px;
+    margin: 10px 0 0 0;
+    text-shadow: 2px 2px 0 #1f3a57;                       /* Small dark shadow behind the letters */
+}
+
+/* My name under the title */
+h2 {
+    color: #cfe0f2;                                       /* Light blue */
+    font-size: 20px;
+    font-weight: normal;
+    margin: 5px 0 15px 0;
+}
+
+/* Box around the name/password inputs */
+#login {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);                /* See-through white box */
+    padding: 10px 15px;
+    border-radius: 12px;                                  /* Rounded corners */
 }
 
 /* Style the game canvas */
 canvas {
-    border: 2px solid black;          /* 2-pixel black border around the canvas */
-    background: rgb(67, 179, 227);    /* Canvas background color */
-    margin-top: 20px;                 /* Space above the canvas */
+    border: 4px solid #1f3a57;                            /* Dark navy frame */
+    border-radius: 12px;                                  /* Rounded corners */
+    background: #f7f3e8;                                  /* Cream board so the X and O lines are easy to see */
+    margin-top: 20px;                                     /* Space above the canvas */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);           /* Shadow so the board looks raised */
 }
 
 /* Style the game status message */
 #status {
-    font-size: 24px;                  /* Bigger text */
-    margin: 15px;                     /* Space around the status div */
-    font-weight: bold;                /* Bold text */
+    font-size: 26px;                                      /* Bigger text */
+    margin: 15px;                                         /* Space around the status div */
+    font-weight: bold;                                    /* Bold text */
+    color: #ffd56b;                                       /* Yellow, same as the title */
 }
 
-/* Style the reset button */
+/* Style the buttons */
 button {
-    margin-top: 20px;                 /* Space above the button */
-    padding: 10px 20px;               /* Space inside the button */
-    font-size: 18px;                  /* Bigger button text */
+    margin-top: 20px;                                     /* Space above the button */
+    padding: 10px 20px;                                   /* Space inside the button */
+    font-size: 18px;                                      /* Bigger button text */
+    font-family: inherit;                                 /* Buttons use Comic Sans too */
+    font-weight: bold;
+    color: #1f3a57;                                       /* Navy text */
+    background: #ffd56b;                                  /* Yellow button */
+    border: none;
+    border-radius: 10px;                                  /* Rounded corners */
+    cursor: pointer;                                      /* Hand cursor on hover */
+}
+
+/* Button changes color when the mouse is over it */
+button:hover {
+    background: #ffe39a;
+}
+
+/* Grey out the Join button after joining */
+button:disabled {
+    background: #9fb3c8;
+    cursor: default;
 }
 
 /* Style the name/password boxes */
 input {
-    padding: 8px;                     /* Space inside the boxes */
-    font-size: 16px;                  /* Bigger text */
-    margin: 5px;                      /* Space between the boxes */
+    padding: 8px;                                         /* Space inside the boxes */
+    font-size: 16px;                                      /* Bigger text */
+    font-family: inherit;                                 /* Inputs use Comic Sans too */
+    margin: 5px;                                          /* Space between the boxes */
+    border: none;
+    border-radius: 8px;                                   /* Rounded corners */
 }
 
 /* "Logged in as ..." and the player names */
 #loggedIn, #players {
-    font-size: 18px;                  /* Medium text */
-    margin: 8px;                      /* Space around the text */
+    font-size: 18px;                                      /* Medium text */
+    margin: 8px;                                          /* Space around the text */
 }
 
 /* Error messages from the server */
 #message {
-    color: red;                       /* Red so it stands out */
-    min-height: 20px;                 /* Keep the space even when empty */
+    color: #ffb3b3;                                       /* Light red, readable on blue */
+    min-height: 20px;                                     /* Keep the space even when empty */
 }
