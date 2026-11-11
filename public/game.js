@@ -114,8 +114,9 @@ function handleClick(event) {
     const mouseY = event.clientY - rect.top;
 
     // Turn the mouse position into a row and column (0, 1, or 2)
-    const col = Math.floor(mouseX / CELL_SIZE);
-    const row = Math.floor(mouseY / CELL_SIZE);
+    // Math.min keeps a click on the border inside the board (0 - 2)
+    const col = Math.min(Math.floor(mouseX / CELL_SIZE), 2);
+    const row = Math.min(Math.floor(mouseY / CELL_SIZE), 2);
     const index = row * 3 + col;   // position in the board array (0 - 8)
 
     // The server checks if the move is allowed

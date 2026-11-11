@@ -10,7 +10,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const PORT = 3000;
+// Serve everything inside the public folder (index.html, game.js, style.css)
+app.use(express.static("public"));
+
+// Cloud hosts like Render choose the port for us in process.env.PORT.
+// On your own PC it falls back to 3000.
+const PORT = process.env.PORT || 3000;
 
 
 let board = [
@@ -36,6 +41,10 @@ io.on("connection", function (socket) {
 
     // A client typed a name/password and clicked "Join Game"
     socket.on("join", function (data) {
+        // Ignore bad messages so they can't crash the server
+        if (!data || typeof data.name !== "string" || typeof data.password !== "string") {
+            return;
+        }
         const name = data.name.trim();
         const password = data.password;
 
